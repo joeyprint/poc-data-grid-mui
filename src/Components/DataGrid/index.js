@@ -1,3 +1,3 @@
-import DataGrid from "./DataGrid";
+import NormalDataGrid from "./NormalDataGrid";
 
-export default DataGrid;
+export { NormalDataGrid };
