@@ -1,6 +1,6 @@
 import React from "react";
-import { DataGrid as MUIDataGrid } from "@mui/x-data-grid";
-import { Avatar, Box, Chip, IconButton, Typography } from "@mui/material";
+import { DataGrid as MUIDataGrid, GridActionsCellItem } from "@mui/x-data-grid";
+import { Avatar, Chip, Typography } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import ContentCopyRoundedIcon from "@mui/icons-material/ContentCopyRounded";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -72,22 +72,25 @@ const columns = [
     ),
   },
   {
-    width: 150,
-    renderCell: (item) => (
-      <Box sx={{ display: "flex" }}>
-        <a href={`/${item.id}`}>
-          <IconButton>
-            <EditIcon />
-          </IconButton>
-        </a>
-        <IconButton>
-          <ContentCopyRoundedIcon />
-        </IconButton>
-        <IconButton>
-          <DeleteIcon />
-        </IconButton>
-      </Box>
-    ),
+    field: "actions",
+    type: "actions",
+    getActions: (item) => [
+      <GridActionsCellItem
+        icon={<EditIcon />}
+        label="Edit"
+        onClick={() => {}}
+      />,
+      <GridActionsCellItem
+        icon={<ContentCopyRoundedIcon />}
+        label="Duplicate"
+        onClick={() => {}}
+      />,
+      <GridActionsCellItem
+        icon={<DeleteIcon />}
+        label="Delete"
+        onClick={() => {}}
+      />,
+    ],
   },
 ];
 
