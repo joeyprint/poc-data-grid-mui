@@ -41,7 +41,8 @@ const columns = [
   {
     field: "name",
     headerName: "User",
-    width: 150,
+    flex: 1,
+    minWidth: 150,
     renderCell: (item) => (
       <Chip
         avatar={<Avatar>{item.value.charAt(0)}</Avatar>}
