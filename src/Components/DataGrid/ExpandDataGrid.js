@@ -1,10 +1,6 @@
 import React from "react";
-import {
-  DataGridPro as MUIDataGridPro,
-  GridActionsCellItem,
-} from "@mui/x-data-grid-pro";
+import { DataGridPro as MUIDataGridPro } from "@mui/x-data-grid-pro";
 import { Typography } from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const INITIAL_GROUPING_COLUMN_MODEL = ["question"];
 
@@ -75,17 +71,6 @@ const columns = [
   { field: "subject", headerName: "Subject", width: 150 },
   { field: "bloom", headerName: "Bloom", width: 150 },
   { field: "level", headerName: "Level", width: 150 },
-  // {
-  //   field: "actions",
-  //   type: "actions",
-  //   getActions: (item) => [
-  //     <GridActionsCellItem
-  //       icon={<ExpandMoreIcon />}
-  //       label="Edit"
-  //       onClick={() => {}}
-  //     />,
-  //   ],
-  // },
 ];
 
 const ExpandDataGrid = () => {

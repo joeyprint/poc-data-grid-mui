@@ -7,6 +7,7 @@ import {
   NormalDataGrid,
   ExpandDataGrid,
   TreeDataGrid,
+  ActionDataGrid,
 } from "./Components/DataGrid";
 import theme from "./Components/Theme";
 
@@ -22,6 +23,12 @@ function App() {
       {/* Normal Data Grid */}
       <Typography variant="h6">Normal Data Grid</Typography>
       <NormalDataGrid />
+
+      <Box mt={3} />
+
+      {/* Data Grid */}
+      <Typography variant="h6">Action Data Grid</Typography>
+      <ActionDataGrid />
 
       <Box mt={3} />
 
