@@ -16,7 +16,6 @@ const rows = [
   {
     id: "63184d56-4eee-4c96-9790-06de9687b649",
     question: ["Which one is animal", "apple"],
-    choices: ["", "apple"],
   },
   {
     id: "4811c2c9-a9a3-476f-ab26-3f7d734fb49a",
