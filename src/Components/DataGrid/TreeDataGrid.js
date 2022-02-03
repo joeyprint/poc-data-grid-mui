@@ -1,7 +1,5 @@
 import React from "react";
 import { DataGridPro as MUIDataGridPro } from "@mui/x-data-grid-pro";
-import { Typography } from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const rows = [
   {
