@@ -51,14 +51,13 @@ const columns = [
 const getTreeDataPath = (row) => row.question;
 const TreeDataGrid = () => {
   return (
-    <div style={{ height: 400, width: "100%" }}>
-      <MUIDataGridPro
-        treeData
-        rows={rows}
-        columns={columns}
-        getTreeDataPath={getTreeDataPath}
-      />
-    </div>
+    <MUIDataGridPro
+      autoHeight
+      treeData
+      rows={rows}
+      columns={columns}
+      getTreeDataPath={getTreeDataPath}
+    />
   );
 };
 

@@ -95,11 +95,7 @@ const columns = [
 ];
 
 const NormalDataGrid = () => {
-  return (
-    <div style={{ height: 300, width: "100%" }}>
-      <MUIDataGrid rows={rows} columns={columns} />
-    </div>
-  );
+  return <MUIDataGrid autoHeight rows={rows} columns={columns} />;
 };
 
 export default NormalDataGrid;

@@ -90,21 +90,20 @@ const columns = [
 
 const ExpandDataGrid = () => {
   return (
-    <div style={{ height: 400, width: "100%" }}>
-      <MUIDataGridPro
-        rows={rows}
-        columns={columns}
-        rowGroupingColumnMode="single"
-        initialState={{
-          rowGrouping: {
-            model: INITIAL_GROUPING_COLUMN_MODEL,
-          },
-        }}
-        experimentalFeatures={{
-          rowGrouping: true,
-        }}
-      />
-    </div>
+    <MUIDataGridPro
+      autoHeight
+      rows={rows}
+      columns={columns}
+      rowGroupingColumnMode="single"
+      initialState={{
+        rowGrouping: {
+          model: INITIAL_GROUPING_COLUMN_MODEL,
+        },
+      }}
+      experimentalFeatures={{
+        rowGrouping: true,
+      }}
+    />
   );
 };
 
