@@ -4,10 +4,11 @@ import { Box, Typography } from "@mui/material";
 import { LicenseInfo } from "@mui/x-data-grid-pro";
 
 import {
-  NormalDataGrid,
-  ExpandDataGrid,
-  TreeDataGrid,
   ActionDataGrid,
+  CollapseDataGrid,
+  GroupingDataGrid,
+  NormalDataGrid,
+  TreeDataGrid,
 } from "./Components/DataGrid";
 import theme from "./Components/Theme";
 
@@ -26,21 +27,27 @@ function App() {
 
       <Box mt={3} />
 
-      {/* Data Grid */}
+      {/* Action Data Grid */}
       <Typography variant="h6">Action Data Grid</Typography>
       <ActionDataGrid />
 
       <Box mt={3} />
 
-      {/* Data Grid */}
+      {/* Grouping Data Grid */}
       <Typography variant="h6">Expand Data Grid</Typography>
-      <ExpandDataGrid />
+      <GroupingDataGrid />
 
       <Box mt={3} />
 
-      {/* Data Grid */}
+      {/* Tree Data Grid */}
       <Typography variant="h6">Tree Data Grid</Typography>
       <TreeDataGrid />
+
+      <Box mt={3} />
+
+      {/* Collapse Data Grid */}
+      <Typography variant="h6">Collapse Data Grid</Typography>
+      <CollapseDataGrid />
     </ThemeProvider>
   );
 }
