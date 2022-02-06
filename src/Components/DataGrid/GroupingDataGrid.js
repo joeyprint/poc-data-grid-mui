@@ -73,7 +73,7 @@ const columns = [
   { field: "level", headerName: "Level", width: 150 },
 ];
 
-const ExpandDataGrid = () => {
+const GroupingDataGrid = () => {
   return (
     <MUIDataGridPro
       autoHeight
@@ -92,4 +92,4 @@ const ExpandDataGrid = () => {
   );
 };
 
-export default ExpandDataGrid;
+export default GroupingDataGrid;
