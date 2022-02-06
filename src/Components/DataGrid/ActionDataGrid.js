@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { DataGrid as MUIDataGrid, GridActionsCellItem } from "@mui/x-data-grid";
-import { Avatar, Box, Chip, Modal, Typography } from "@mui/material";
+import { Box, Modal, Typography } from "@mui/material";
 
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 
