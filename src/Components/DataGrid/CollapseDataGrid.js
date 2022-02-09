@@ -8,13 +8,26 @@ import {
 } from "@mui/x-data-grid-pro";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Box, Alert, IconButton, Typography } from "@mui/material";
+import { styled } from "@mui/system";
+
+const StyledDataGridPro = styled(DataGridPro)(({ theme }) => ({
+  "& .MuiDataGrid-detailPanel": {
+    overflowY: "scroll",
+  },
+}));
 
 const columns = [
   {
     field: "question",
     flex: 1,
     renderCell: (item) => (
-      <Typography variant={"body2"} fontWeight={600}>
+      <Typography
+        variant={"body2"}
+        fontWeight={600}
+        textOverflow={"ellipsis"}
+        whiteSpace={"nowrap"}
+        overflow={"hidden"}
+      >
         {item.value}
       </Typography>
     ),
@@ -38,22 +51,7 @@ const rows = [
     subject: "English",
     question: "Which one is animal",
     choices: ["ant", "axe", "apple", "alcohol"],
-    bloom: "Remember",
-    level: "Easy",
-  },
-  {
-    id: "4b83ec01-6e4b-4958-b5a1-b69ac3764105",
-    subject: "Math",
-    question: "1 + 2 = ?",
-    choices: ["1", "2", "3", "4"],
-    bloom: "Remember",
-    level: "Easy",
-  },
-  {
-    id: "0f87e414-80fb-41b1-b599-43eee5b096b7",
-    subject: "Math",
-    question: "1 + 3 = ?",
-    choices: ["1", "2", "3", "4"],
+    correctAnswer: 1,
     bloom: "Remember",
     level: "Easy",
   },
@@ -62,6 +60,7 @@ const rows = [
     subject: "Computer",
     question: "Which one isn't IT gadgets",
     choices: ["Monitor", "Keyboard", "Glasses", "Speaker"],
+    correctAnswer: 3,
     bloom: "Remember",
     level: "Easy",
   },
@@ -70,15 +69,48 @@ const rows = [
     subject: "General",
     question: "Which one isn't Apple's products",
     choices: ["iPhone", "iTag", "AirTag", "Airpod"],
+    correctAnswer: 2,
     bloom: "Remember",
     level: "Easy",
   },
+  // {
+  //   id: "93034ebf-4582-4bcb-99e1-2290ac6d49d8",
+  //   subject: "General",
+  //   question: "Which one is Meta's products",
+  //   choices: ["Metaverse", "Facebook", "Tictok", "Microsoft"],
+  //   correctAnswer: 3,
+  //   bloom: "Remember",
+  //   level: "Medium",
+  // },
   {
-    id: "93034ebf-4582-4bcb-99e1-2290ac6d49d8",
+    id: "0f87e414-80fb-41b1-b599-43eee5b096b7",
     subject: "General",
-    question: "Which one is Meta's products",
-    choices: ["Metaverse", "Facebook", "Tictok", "Microsoft"],
-    bloom: "Remember",
+    question:
+      "กราฟต่อไปนี้แสดงความสามารถในการละลายของสาร X และสาร Y ในน้ำ เมื่อนำสาร X และ Y ไปละลายน้ำในภาชนะเดียวกันจนได้สารละลายอิ่มตัว (ของสารทั้ง 2 ชนิด) ที่อุณหภูมิ 60 o C แล้วค่อยๆ ลดอุณหภูมิลงจนเป็น 40 o C พบว่า มีตะกอนตกอยู่ที่ก้นภาชนะ ตะกอนนี้คือสารใด",
+    choices: [
+      "สาร X อย่างเดียว",
+      "สาร Y อย่างเดียว",
+      "สาร X ปนกับสาร Y แต่มีสาร X มากกว่า",
+      "สาร X ปนกับสาร Y แต่มีสาร Y มากกว่า",
+    ],
+    imageUrl: "/assets/images/question/question-image.jpeg",
+    correctAnswer: 3,
+    bloom: "Understand",
+    level: "Medium",
+  },
+  {
+    id: "4b83ec01-6e4b-4958-b5a1-b69ac3764105",
+    subject: "General",
+    question:
+      "สาร A ทำ ปฏิกิริยากับแคลเซียมคาร์บอเนต เกิดแก๊ส B แก๊ส B ทำ ปฏิกิริยากับสารละลายแคลเซียมไฮดรอกไซด์ เกิดตะกอนสีขาวขุ่น สาร A และ แก๊ส B ควรเป็นสารใด ตามลำดับ",
+    choices: [
+      "น้ำส้มสายชู, SO2",
+      "น้ำยาล้างห้องน้ำ, SO2",
+      "น้ำสบู่, CO2",
+      "น้ำมะนาว, CO2",
+    ],
+    correctAnswer: 4,
+    bloom: "Understand",
     level: "Medium",
   },
 ];
@@ -135,18 +167,46 @@ const CollapseDataGrid = () => {
         </code>
       </Alert>
       <div style={{ height: 400, width: "100%" }}>
-        <DataGridPro
+        <StyledDataGridPro
           rows={rows}
           columns={columns}
           rowThreshold={0}
           getDetailPanelContent={({ row }) => (
-            <Box sx={{ p: 2 }} height={1}>
-              {row.choices.map((choice) => (
-                <Typography variant={"body1"}>{choice}</Typography>
+            <Box sx={{ py: 2, px: 4 }}>
+              {row.imageUrl && (
+                <Box
+                  component={"img"}
+                  src={row.imageUrl}
+                  alt={"question-image"}
+                />
+              )}
+              <Typography sx={{ p: 2 }}>
+                <Typography
+                  component={"span"}
+                  fontWeight={600}
+                  color={"grey.500"}
+                >
+                  Question:
+                </Typography>
+                {` ${row.question}`}
+              </Typography>
+              {row.choices.map((choice, index) => (
+                <Typography
+                  variant={"body1"}
+                  sx={{
+                    p: 2,
+                    bgcolor:
+                      row.correctAnswer === index + 1
+                        ? "success.light"
+                        : "unset",
+                  }}
+                >
+                  {choice}
+                </Typography>
               ))}
             </Box>
           )}
-          getDetailPanelHeight={() => 150}
+          getDetailPanelHeight={() => 300}
           detailPanelExpandedRowIds={detailPanelExpandedRowIds}
           onDetailPanelExpandedRowIdsChange={
             handleDetailPanelExpandedRowIdsChange
